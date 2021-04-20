@@ -1,0 +1,62 @@
+== Metric
+
+Common metrics for lib that can be used with link:https://kamon.io[Kamon] and link:https://micrometer.io/[Micrometer]
+
+== Usage
+
+=== For lib
+
+Import :
+[source, xml]
+----
+<parent>
+    <groupId>bzh.zomzog.metrics</groupId>
+    <artifactId>common</artifactId>
+    <version>${metrics.version}</version>
+</parent>
+----
+
+Usage :
+[source, kotlin]
+----
+fun myLittleGauge(registry: MeterRegistry) {
+    val gauge = registry.gauge("pony")
+    gague.increment()
+}
+----
+
+=== Micrometer
+
+Import :
+[source, xml]
+----
+<parent>
+    <groupId>bzh.zomzog.metrics</groupId>
+    <artifactId>micrometer</artifactId>
+    <version>${metrics.version}</version>
+</parent>
+----
+
+Usage :
+[source, kotlin]
+----
+myLittleGauge(MicrometerMeterRegistry(SimpleMeterRegistry()))
+----
+
+=== Kamon
+
+Import :
+[source, xml]
+----
+<parent>
+    <groupId>bzh.zomzog.metrics</groupId>
+    <artifactId>kamon</artifactId>
+    <version>${metrics.version}</version>
+</parent>
+----
+
+Usage :
+[source, kotlin]
+----
+myLittleGauge(KamonMeterRegistry())
+----
